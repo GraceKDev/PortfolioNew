@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fffaf6;
+  --foreground: #35251f;
 }
 
 @theme inline {
@@ -10,17 +10,162 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-violetta: var(--font-violetta-brigida);
+  --font-retro: var(--font-retro-floral);
+
+  --color-beige-50: #fffaf6;
+  --color-beige-100: #f8efe7;
+  --color-beige-200: #f1e3d8;
+  --color-beige-300: #e5d1c1;
+  --color-beige-400: #d3b8a3;
+  --color-beige-500: #bd9b83;
+  --color-beige-600: #a27d66;
+  --color-beige-700: #846351;
+  --color-beige-800: #684c40;
+  --color-beige-900: #4c3932;
+
+  --color-cocoa-50: #f4ece6;
+  --color-cocoa-100: #e2d1c4;
+  --color-cocoa-200: #c7aa96;
+  --color-cocoa-300: #a5856c;
+  --color-cocoa-400: #84644e;
+  --color-cocoa-500: #684b38;
+  --color-cocoa-600: #50382b;
+  --color-cocoa-700: #3f2d25;
+  --color-cocoa-800: #33251f;
+  --color-cocoa-900: #261b17;
+
+  --color-beige: #f1e3d8;
+  --color-cocoa: #50382b;
+
+  --color-softpink-100: #fff3fa;
+  --color-softpink-200: #ffe1ed;
+  --color-softpink-300: #fcd7d7;
+  --color-softpink-400: #f9c1d2;
+  --color-softpink-500: #f2a9c3;
+  --color-softpink-600: #ec8db1;
+  --color-softpink-700: #df6f9a;
+  --color-softpink-800: #cf5d8d;
+  --color-softpink-900: #b94d78;
+
+  --color-roseblush-100: #fff3fa;
+  --color-roseblush-200: #ffe1ed;
+  --color-roseblush-300: #ffd6e8;
+  --color-roseblush-400: #f7bfd8;
+  --color-roseblush-500: #ebb1cd;
+  --color-roseblush-600: #e095ba;
+  --color-roseblush-700: #d37aa7;
+  --color-roseblush-800: #c36494;
+  --color-roseblush-900: #a94d7a;
+
+  --color-rosecloud-100: #fffafc;
+  --color-rosecloud-200: #fff3fa;
+  --color-rosecloud-300: #ffeef6;
+  --color-rosecloud-400: #f7dfe9;
+  --color-rosecloud-500: #efc7dc;
+  --color-rosecloud-600: #e3afd0;
+  --color-rosecloud-700: #d495bc;
+  --color-rosecloud-800: #c078a7;
+  --color-rosecloud-900: #a65c8d;
+
+  --color-pinkdust-100: #fff3fa;
+  --color-pinkdust-200: #fcd7d7;
+  --color-pinkdust-300: #f3b9c8;
+  --color-pinkdust-400: #ecbad0;
+  --color-pinkdust-500: #df9ab8;
+  --color-pinkdust-600: #d07ca2;
+  --color-pinkdust-700: #bd5d90;
+  --color-pinkdust-800: #a14278;
+  --color-pinkdust-900: #83365e;
+
+  --color-rosewood-100: #f7dfe6;
+  --color-rosewood-200: #eac2d0;
+  --color-rosewood-300: #dca5b8;
+  --color-rosewood-400: #c78ca0;
+  --color-rosewood-500: #b0667c;
+  --color-rosewood-600: #954c63;
+  --color-rosewood-700: #7d3e54;
+  --color-rosewood-800: #623146;
+  --color-rosewood-900: #4d2638;
+
+  --color-softpink: #fcd7d7;
+  --color-roseblush: #ffe1ed;
+  --color-rosecloud: #fff3fa;
+  --color-pinkdust: #ecbad0;
+  --color-rosewood: #c78ca0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --softpink-100: #fff3fa;
+  --softpink-200: #ffe1ed;
+  --softpink-300: #fcd7d7;
+  --softpink-400: #f9c1d2;
+  --softpink-500: #f2a9c3;
+  --softpink-600: #ec8db1;
+  --softpink-700: #df6f9a;
+  --softpink-800: #cf5d8d;
+  --softpink-900: #b94d78;
+
+  --roseblush-100: #fff3fa;
+  --roseblush-200: #ffe1ed;
+  --roseblush-300: #ffd6e8;
+  --roseblush-400: #f7bfd8;
+  --roseblush-500: #ebb1cd;
+  --roseblush-600: #e095ba;
+  --roseblush-700: #d37aa7;
+  --roseblush-800: #c36494;
+  --roseblush-900: #a94d7a;
+
+  --rosecloud-100: #fffafc;
+  --rosecloud-200: #fff3fa;
+  --rosecloud-300: #ffeef6;
+  --rosecloud-400: #f7dfe9;
+  --rosecloud-500: #efc7dc;
+  --rosecloud-600: #e3afd0;
+  --rosecloud-700: #d495bc;
+  --rosecloud-800: #c078a7;
+  --rosecloud-900: #a65c8d;
+
+  --pinkdust-100: #fff3fa;
+  --pinkdust-200: #fcd7d7;
+  --pinkdust-300: #f3b9c8;
+  --pinkdust-400: #ecbad0;
+  --pinkdust-500: #df9ab8;
+  --pinkdust-600: #d07ca2;
+  --pinkdust-700: #bd5d90;
+  --pinkdust-800: #a14278;
+  --pinkdust-900: #83365e;
+
+  --rosewood-100: #f7dfe6;
+  --rosewood-200: #eac2d0;
+  --rosewood-300: #dca5b8;
+  --rosewood-400: #c78ca0;
+  --rosewood-500: #b0667c;
+  --rosewood-600: #954c63;
+  --rosewood-700: #7d3e54;
+  --rosewood-800: #623146;
+  --rosewood-900: #4d2638;
+
+  --softpink: #fcd7d7;
+  --roseblush: #ffe1ed;
+  --rosecloud: #fff3fa;
+  --pinkdust: #ecbad0;
+  --rosewood: #c78ca0;
 }
 
 body {
-  background: var(--background);
+  margin: 0;
+  min-height: 100vh;
+
+  background-color: var(--background);
+  background-position: top left, top left, center;
+  background-repeat: repeat, repeat, no-repeat;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.coquette-heart-pattern {
+  background-color: var(--background);
+  
+  
 }

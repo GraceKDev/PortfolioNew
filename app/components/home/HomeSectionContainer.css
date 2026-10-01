@@ -1,0 +1,7 @@
+.home-section-container {
+  width: min(90%, 80rem);
+  min-height: min(30vh,60rem);
+  padding:1rem;
+  margin:0 auto;
+}
+
