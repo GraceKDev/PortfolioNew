@@ -1,12 +1,12 @@
 import Banner from "./components/globals/banner/Banner";
 import GridContainer from "./components/globals/gridcontainer/GridContainer";
-import Heading from "./components/globals/Heading";
-import HorizontalRule from "./components/globals/HorizontalRule";
 import Navbar from "./components/globals/navbar/Navbar";
 import AboutMe from "./components/home/AboutMe";
 import HomeSectionContainer from "./components/home/HomeSectionContainer";
 import PicnicHero from "./components/home/PicnicHero";
+import ProfesionalExperience from "./components/home/ProfessionalExperience";
 import RecentCommits from "./components/home/RecentCommits";
+import Tools from "./components/home/Tools";
 import strings from "./res/strings"
 export default function Home() {
   return (
@@ -20,6 +20,18 @@ export default function Home() {
           <GridContainer >
             <AboutMe />
             <RecentCommits />
+          </GridContainer>
+        </HomeSectionContainer>
+         <HomeSectionContainer>
+          <GridContainer gridCol="one" >
+            <ProfesionalExperience/>
+            
+          </GridContainer>
+        </HomeSectionContainer>
+          <HomeSectionContainer>
+          <GridContainer gridCol="one" >
+            <Tools/>
+            
           </GridContainer>
         </HomeSectionContainer>
         

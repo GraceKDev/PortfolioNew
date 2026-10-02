@@ -10,7 +10,7 @@ export const projects: Project[] = [
                 sha: "a8f3c21",
                 message: "Added responsive navigation",
                 author: "Grace",
-                date: "21/03/2021",
+                date: "1/10/2026",
                 url: "https://test.com/commit/a8f3c21"
             },
             {

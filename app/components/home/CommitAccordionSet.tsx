@@ -1,45 +1,59 @@
 "use client";
 
-import type { Commit } from "@/app/types/Commit";
+import type { Project } from "@/app/types/Projects";
 import { useState } from "react";
+import Accordion from "./Accordion";
 import RecentCommit from "./RecentCommit";
 
 interface CommitAccordionSetProps {
-    commits: Commit[];
+    projects: Project[];
 }
 
-export default function CommitAccordionSet({ commits }: CommitAccordionSetProps) {
-    const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
-
-    const createCommitChild = (commit: Commit) => <RecentCommit commit={commit} />;
+export default function CommitAccordionSet({ projects }: CommitAccordionSetProps) {
+    const [activeProject, setActiveProject] = useState<number | null>(null);
+    const [activeCommit, setActiveCommit] = useState<string | null>(null);
+    const projectsWithCommits = projects.filter((project) => project.commits.length > 0);
 
     return (
         <div className="min-w-0 w-full max-w-full overflow-hidden divide-y divide-dashed divide-beige-300 border-y border-dashed border-beige-300">
-            {commits.map((commit, index) => {
-                const isActive = activeAccordion === index;
+            {projectsWithCommits.length === 0 ? (
+                <p className="px-3 py-4 text-sm text-cocoa-600">No commits in the last 7 days.</p>
+            ) : projectsWithCommits.map((project, projectIndex) => {
+                const isProjectActive = activeProject === projectIndex;
+                const projectPanelId = `project-commits-${projectIndex}`;
 
                 return (
-                    <section key={commit.sha} className="min-w-0 max-w-full">
-                        <button
-                            type="button"
-                            aria-expanded={isActive}
-                            className="group flex w-full min-w-0 items-center gap-3 px-2 py-3 text-left text-cocoa-700 transition-colors hover:bg-rosecloud-200 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-rosewood-500"
-                            onClick={() => setActiveAccordion(isActive ? null : index)}
-                        >
-                            <span className="min-w-0 flex-1 break-words font-medium group-hover:text-cocoa-900">
-                                {commit.message}
-                            </span>
-                            <span className="shrink-0 text-xs text-cocoa-500">{commit.date}</span>
-                            <span aria-hidden="true" className="grid size-7 shrink-0 place-items-center rounded-full border border-pinkdust-400 bg-rosecloud-100 text-sm text-cocoa-700">
-                                {isActive ? "−" : "+"}
-                            </span>
-                        </button>
-                        {isActive && (
-                            <div className="min-w-0 max-w-full overflow-hidden">
-                                {createCommitChild(commit)}
-                            </div>
-                        )}
-                    </section>
+                    <Accordion
+                        key={project.projectName}
+                        id={projectPanelId}
+                        active={isProjectActive}
+                        accordionTitle={project.projectName}
+                        summary={`${project.lastUpdated} · ${project.commits.length} ${project.commits.length === 1 ? "commit" : "commits"}`}
+                        onToggle={() => {
+                            setActiveProject(isProjectActive ? null : projectIndex);
+                            setActiveCommit(null);
+                        }}
+                    >
+                        <div className="ml-3 divide-y divide-dashed divide-beige-200 border-l-2 border-dashed border-pinkdust-300 py-1 pl-3">
+                            {project.commits.map((commit) => {
+                                const commitId = `${projectIndex}-${commit.sha}`;
+                                const commitPanelId = `commit-details-${commitId}`;
+
+                                return (
+                                    <Accordion
+                                        key={commit.sha}
+                                        id={commitPanelId}
+                                        active={activeCommit === commitId}
+                                        accordionTitle={commit.message}
+                                        summary={commit.date}
+                                        onToggle={() => setActiveCommit(activeCommit === commitId ? null : commitId)}
+                                    >
+                                        <RecentCommit commit={commit} />
+                                    </Accordion>
+                                );
+                            })}
+                        </div>
+                    </Accordion>
                 );
             })}
         </div>

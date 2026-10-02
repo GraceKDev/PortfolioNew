@@ -4,7 +4,8 @@ import { useEffect, useRef } from "react";
 import { tv } from "tailwind-variants";
 
 export interface GridContainerProps {
-    children:React.ReactNode
+    children: React.ReactNode;
+    gridCol?: "one" | "two";
 }
 
 const gridContainer = tv({
@@ -14,9 +15,15 @@ const gridContainer = tv({
         gap-6
         [&>*]:min-w-0
         max-[700px]:grid-cols-1
-    `
+    `,
+    variants: {
+        gridCol: {
+            one: "grid-cols-1",
+            two: "grid-cols-2",
+        },
+    },
 });
-export default function GridContainer({children}:GridContainerProps) {
+export default function GridContainer({ children, gridCol = "two" }: GridContainerProps) {
     const gridRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
@@ -67,7 +74,7 @@ export default function GridContainer({children}:GridContainerProps) {
     }, []);
 
     return (
-        <section ref={gridRef} className={gridContainer()}>
+        <section ref={gridRef} className={gridContainer({ gridCol })}>
             {children}
         </section>
     );
